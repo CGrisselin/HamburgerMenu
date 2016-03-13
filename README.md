@@ -1,35 +1,29 @@
 # HamburgerMenu
-Windows 10 styled, customizable Hamburger Menu control for WPF
+Windows 10 styled, customizable Hamburger Menu control for WPF - Adapted from [alicanerdogan/HamburgerMenu](https://github.com/alicanerdogan/HamburgerMenu)
 
-![Animation](http://i.imgur.com/ReTRU2E.gif "Animation")
-
-# Getting Started
-
-## Install
-From nuget:
-```
-Install-Package HamburgerMenu 
-```
+![Animation](http://imgur.com/x42dTVc.gif "Animation")
 
 ## Use
-Add library reference in xaml:
-```
-xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
-```
+1. Add library reference in xaml:
 
-Create a Hamburger Menu control and set Background Color, Menu Icon Color, Selection Indicator Color and Menu Item Foreground Color:
+2. Create a Hamburger Menu control and add menu items:
 ```
-<HamburgerMenu:HamburgerMenu Background="Blue" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
-</HamburgerMenu:HamburgerMenu>
-```
-
-Add Menu Items and set their Icon and Text:
-```
-<HamburgerMenu:HamburgerMenu Background="Blue" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
-      <HamburgerMenu:HamburgerMenuItem Icon="Assets/home.png" Text="Home" SelectionCommand="{Binding ElementName=this_}"/>
-      <HamburgerMenu:HamburgerMenuItem Icon="Assets/search.png" Text="Search"/>
-      <HamburgerMenu:HamburgerMenuItem Icon="Assets/favorite.png" Text="Likes"/>
-      <HamburgerMenu:HamburgerMenuItem Icon="Assets/list.png" Text="Lists"/>
-      <HamburgerMenu:HamburgerMenuItem Icon="Assets/person.png" Text="Profile"/>
-</HamburgerMenu:HamburgerMenu>
+<HamburgerMenu:HamburgerMenu Background="Black" MenuIconColor="CadetBlue" 
+                                     SelectionIndicatorColor="CadetBlue" 
+                                     MenuItemForeground="#fddd" 
+                                     HorizontalAlignment="Left" 
+                                     OpenWidth="170" CloseWidth="45"
+                                     IconsMargin="10" IconsSize="20"
+                                     AnimationDuration="0.2" SlideOpenDelay="0.6">
+            <HamburgerMenu:HamburgerMenu.Content>
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/home.png" Text="Home" 
+                                                 SelectionCommand="{Binding ElementName=this_}" SelectionCommandParameter="The parameter"
+                                                 DockPanel.Dock="Top" />
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/reload.png" Text="Reload" DockPanel.Dock="Bottom" IsSelectable="False"/>
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/search.png" Text="Search" DockPanel.Dock="Bottom"/>
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/favorite.png" Text="Likes" DockPanel.Dock="Top"/>
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/list.png" Text="Lists" DockPanel.Dock="Top"/>
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/person.png" Text="Profile" />
+            </HamburgerMenu:HamburgerMenu.Content>
+        </HamburgerMenu:HamburgerMenu>
 ```

@@ -4,9 +4,9 @@
     <Style TargetType="local:HamburgerMenu">
         <Style.Resources>
         </Style.Resources>
-        <Setter Property="Width" Value="50"/>
+        <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=CloseWidth}"/>
         <Setter Property="Visibility" Value="Visible"/>
-        <Setter Property="IsOpen" Value="False"/>
+        <Setter Property="IsOpen" Value="{Binding RelativeSource={RelativeSource Self}, Path=IsOpen}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:HamburgerMenu">
@@ -23,36 +23,35 @@
                         </ResourceDictionary>
                     </ControlTemplate.Resources>
                     <Grid x:Name="mainGrid" Background="{TemplateBinding Background}">
-                        <ToggleButton x:Name="menuIcon" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="50" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IsOpen}">
-                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="30" Fill="{TemplateBinding MenuIconColor}" Data="M2,15.5L22,15.5 22,17.5 2,17.5 2,15.5z M2,10.5L22,10.5 22,12.5 2,12.5 2,10.5z M2,5.5L22,5.5 22,7.5 2,7.5 2,5.5z"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                            <RowDefinition Height="5"/>
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="menuIcon" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                      Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsMargin}">
+                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" 
+                                  Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}" 
+                                  Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}" 
+                                  Fill="{TemplateBinding MenuIconColor}" 
+                                  Data="M2,15.5L22,15.5 22,17.5 2,17.5 2,15.5z M2,10.5L22,10.5 22,12.5 2,12.5 2,10.5z M2,5.5L22,5.5 22,7.5 2,7.5 2,5.5z"/>
                         </ToggleButton>
-                        <ListBox ItemsSource="{TemplateBinding Content}" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedIndex="0"/>
+                        <ListBox Grid.Row="2" ItemsSource="{TemplateBinding Content}" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Stretch" 
+                                 Margin="0,10,0,0" 
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                 SelectedIndex="0"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsOpen" Value="True">
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation 
-                                         Storyboard.TargetProperty="Width"
-                                         To="300"
-                                         Duration="0:0:0.2"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
-                <Trigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation 
-                                         Storyboard.TargetProperty="Width"
-                                         To="50"
-                                         Duration="0:0:0.2"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.ExitActions>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="IsOpen" Value="True"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="IsOpen" Value="False"/>
             </Trigger>
         </Style.Triggers>
     </Style>

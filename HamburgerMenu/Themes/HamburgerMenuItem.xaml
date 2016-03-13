@@ -13,35 +13,48 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:HamburgerMenuItem">
-                    <Button x:Name="ListBoxItemButton" Command="{TemplateBinding SelectionCommand}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <Button x:Name="ListBoxItemButton" Command="{TemplateBinding SelectionCommand}" 
+                            CommandParameter="{TemplateBinding SelectionCommandParameter}"
+                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                            VerticalAlignment="Center">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="2"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.ColumnSpan="2">
-                                <Grid Background="Transparent" Margin="0" Width="300">
+                                <Grid Background="Transparent" Margin="0" Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=OpenWidth}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="45"/>
+                                        <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=CloseWidth}"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="1">
-                                        <TextBlock Text="{TemplateBinding Text}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="18" Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap"/>
-                                    </Grid>
-                                    <Grid Grid.Column="0">
-                                        <Image Source="{TemplateBinding Icon}" Margin="10,5,5,5"/>
-                                    </Grid>
+                                    <Image Grid.Column="0" Source="{TemplateBinding Icon}" 
+                                           Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
+                                           Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
+                                           Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsMargin}"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                                           Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                    <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" 
+                                               Margin="10,0,0,0" 
+                                               HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                               FontFamily="Segoe UI" FontSize="12" Opacity="0.7" 
+                                               TextOptions.TextFormattingMode="Ideal" TextOptions.TextHintingMode="Animated"
+                                               Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap"/>
                                 </Grid>
                             </Grid>
-                            <Grid Name="ItemSelectedIndicator"  Grid.Column="0" Background="{TemplateBinding SelectionIndicatorColor}" Visibility="Collapsed" />
+                            <Grid Name="ItemSelectedIndicator" Grid.Column="0" Background="{TemplateBinding SelectionIndicatorColor}" Visibility="Collapsed" />
                         </Grid>
                     </Button>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ItemSelectedIndicator" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <Trigger SourceName="ListBoxItemButton" Property="IsPressed" Value="True">
-                            <Trigger.ExitActions>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=IsPressed, ElementName=ListBoxItemButton}" Value="True"/>
+                                <Condition Binding="{Binding IsSelectable, RelativeSource={RelativeSource Self}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsSelected">
@@ -49,8 +62,8 @@
                                         </BooleanAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
