@@ -1,7 +1,7 @@
 # HamburgerMenu
 Windows 10 styled, customizable Hamburger Menu control for WPF - Adapted from [alicanerdogan/HamburgerMenu](https://github.com/alicanerdogan/HamburgerMenu)
 
-![Animation](http://imgur.com/x42dTVc "Animation")
+![Animation](http://imgur.com/x42dTVc.gif "Animation")
 
 ## Use
 1. Add library reference in xaml:
