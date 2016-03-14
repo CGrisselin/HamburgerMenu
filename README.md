@@ -8,7 +8,8 @@ Windows 10 styled, customizable Hamburger Menu control for WPF - Adapted from [a
 
 2. Create a Hamburger Menu control and add menu items:
 ```
-<HamburgerMenu:HamburgerMenu Background="Black" MenuIconColor="CadetBlue" 
+<HamburgerMenu:HamburgerMenu Background="Black" 
+                                     MenuIcon="Assets/myAppIcon.png" MenuIconColor="CadetBlue" 
                                      SelectionIndicatorColor="CadetBlue" 
                                      MenuItemForeground="#fddd" 
                                      HorizontalAlignment="Left" 
