@@ -29,14 +29,16 @@
                             <RowDefinition />
                             <RowDefinition Height="5"/>
                         </Grid.RowDefinitions>
-                        <ToggleButton x:Name="menuIcon" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                      Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsMargin}">
-                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" 
-                                  Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}" 
-                                  Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}" 
-                                  Fill="{TemplateBinding MenuIconColor}" 
-                                  Data="M2,15.5L22,15.5 22,17.5 2,17.5 2,15.5z M2,10.5L22,10.5 22,12.5 2,12.5 2,10.5z M2,5.5L22,5.5 22,7.5 2,7.5 2,5.5z"/>
-                        </ToggleButton>
+                        <Rectangle x:Name="menuIcon" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                   Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsMargin}"
+                                   Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
+                                   Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
+                                   Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=MenuIconColor}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=MenuIcon}" 
+                                            Stretch="Uniform"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                         <ListBox Grid.Row="2" ItemsSource="{TemplateBinding Content}" 
                                  HorizontalAlignment="Left" VerticalAlignment="Stretch" 
                                  Margin="0,10,0,0" 
