@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 
 namespace HamburgerMenu
 {
@@ -171,5 +172,14 @@ namespace HamburgerMenu
             set { SetValue(IconsMarginProperty, value); }
         }
 
+        public ImageSource MenuIcon
+        {
+            get { return (ImageSource)GetValue(MenuIconProperty); }
+            set { SetValue(MenuIconProperty, value); }
+        }
+
+        public static readonly DependencyProperty MenuIconProperty =
+            DependencyProperty.Register("MenuIcon", typeof(ImageSource), typeof(HamburgerMenu), new PropertyMetadata(
+                new BitmapImage(new Uri("pack://application:,,,/HamburgerMenu;component/Assets/Menu.png", UriKind.Absolute))));
     }
 }
