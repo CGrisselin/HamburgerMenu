@@ -22,7 +22,7 @@ namespace HamburgerMenu
             set { SetValue(ContentProperty, value); }
         }
 
-        public new static readonly DependencyProperty ContentProperty =
+        public static new readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(List<Control>), typeof(HamburgerMenu),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure));
 
