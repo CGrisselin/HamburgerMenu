@@ -1,11 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:HamburgerMenu">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:HamburgerMenu">
     <Style TargetType="local:HamburgerMenuItem">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/HamburgerMenu;component/Themes/ButtonStyle.xaml"/>
+                    <ResourceDictionary Source="/HamburgerMenu;component/Themes/ButtonStyle.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
@@ -13,36 +14,57 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:HamburgerMenuItem">
-                    <Button x:Name="ListBoxItemButton" Command="{TemplateBinding SelectionCommand}" 
-                            CommandParameter="{TemplateBinding SelectionCommandParameter}"
-                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
-                            VerticalAlignment="Center">
+                    <Button
+                        x:Name="ListBoxItemButton"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Command="{TemplateBinding SelectionCommand}"
+                        CommandParameter="{TemplateBinding SelectionCommandParameter}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2" />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.ColumnSpan="2">
-                                <Grid Background="Transparent" Margin="0" Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=OpenWidth}">
+                                <Grid
+                                    Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=OpenWidth}"
+                                    Margin="0"
+                                    Background="Transparent">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=CloseWidth}"/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=CloseWidth}" />
+                                        <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Source="{TemplateBinding Icon}" 
-                                           Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
-                                           Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
-                                           Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsMargin}"
-                                           HorizontalAlignment="Left" VerticalAlignment="Center"
-                                           Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                    <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" 
-                                               Margin="10,0,0,0" 
-                                               HorizontalAlignment="Left" VerticalAlignment="Center" 
-                                               FontFamily="Segoe UI" FontSize="12" Opacity="0.7" 
-                                               TextOptions.TextFormattingMode="Ideal" TextOptions.TextHintingMode="Animated"
-                                               Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap"/>
+                                    <Image
+                                        Grid.Column="0"
+                                        Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
+                                        Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsSize}"
+                                        Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=IconsMargin}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                        Source="{TemplateBinding Icon}"
+                                        Stretch="UniformToFill" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Segoe UI"
+                                        FontSize="12"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Opacity="0.7"
+                                        Text="{TemplateBinding Text}"
+                                        TextOptions.TextFormattingMode="Ideal"
+                                        TextOptions.TextHintingMode="Animated"
+                                        TextWrapping="Wrap" />
                                 </Grid>
                             </Grid>
-                            <Grid Name="ItemSelectedIndicator" Grid.Column="0" Background="{TemplateBinding SelectionIndicatorColor}" Visibility="Collapsed" />
+                            <Grid
+                                Name="ItemSelectedIndicator"
+                                Grid.Column="0"
+                                Background="{TemplateBinding SelectionIndicatorColor}"
+                                Visibility="Collapsed" />
                         </Grid>
                     </Button>
                     <ControlTemplate.Triggers>
@@ -51,8 +73,8 @@
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=IsPressed, ElementName=ListBoxItemButton}" Value="True"/>
-                                <Condition Binding="{Binding IsSelectable, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                <Condition Binding="{Binding Path=IsPressed, ElementName=ListBoxItemButton}" Value="True" />
+                                <Condition Binding="{Binding IsSelectable, RelativeSource={RelativeSource Self}}" Value="True" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.ExitActions>
                                 <BeginStoryboard>

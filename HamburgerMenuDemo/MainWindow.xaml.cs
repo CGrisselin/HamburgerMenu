@@ -7,7 +7,7 @@ namespace HamburgerMenuDemo
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, ICommand
+    public partial class MainWindow : ICommand
     {
         public MainWindow()
         {
