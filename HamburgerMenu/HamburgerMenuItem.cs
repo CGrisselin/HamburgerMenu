@@ -48,5 +48,23 @@ namespace HamburgerMenu
 
         public static readonly DependencyProperty SelectionCommandProperty =
             DependencyProperty.Register("SelectionCommand", typeof(ICommand), typeof(HamburgerMenuItem), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty SelectionCommandParameterProperty = DependencyProperty.Register(
+            "SelectionCommandParameter", typeof(object), typeof(HamburgerMenuItem), new PropertyMetadata(default(object)));
+
+        public object SelectionCommandParameter
+        {
+            get { return GetValue(SelectionCommandParameterProperty); }
+            set { SetValue(SelectionCommandParameterProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsSelectableProperty = DependencyProperty.Register(
+            "IsSelectable", typeof(bool), typeof(HamburgerMenuItem), new PropertyMetadata(true));
+
+        public bool IsSelectable
+        {
+            get { return (bool)GetValue(IsSelectableProperty); }
+            set { SetValue(IsSelectableProperty, value); }
+        }
     }
 }
