@@ -129,7 +129,12 @@ namespace HamburgerMenu
         public int SelectedIndex
         {
             get { return (int)GetValue(SelectedIndexProperty); }
-            set { SetValue(SelectedIndexProperty, value); }
+            set
+            {
+                SetValue(SelectedIndexProperty, value);
+                if (value < Content.Count)
+                    Content[value].IsSelected = true;
+            }
         }
 
         public static readonly DependencyProperty SelectedIndexProperty =

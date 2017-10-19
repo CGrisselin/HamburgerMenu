@@ -57,7 +57,7 @@
                             VerticalAlignment="Stretch"
                             ItemsSource="{TemplateBinding Content}"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                            SelectedIndex="0" />
+                            SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=SelectedIndex}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
