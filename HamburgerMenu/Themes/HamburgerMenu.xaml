@@ -4,7 +4,8 @@
     <Style TargetType="local:HamburgerMenu">
         <Style.Resources>
         </Style.Resources>
-        <Setter Property="Width" Value="50"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="MaxWidth" Value="300"/>
         <Setter Property="Visibility" Value="Visible"/>
         <Setter Property="IsOpen" Value="False"/>
         <Setter Property="Template">
@@ -31,13 +32,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Triggers>
             <Trigger Property="IsOpen" Value="True">
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation 
-                                         Storyboard.TargetProperty="Width"
+                                         Storyboard.TargetProperty="MaxWidth"
                                          To="300"
                                          Duration="0:0:0.2"/>
                         </Storyboard>
@@ -47,7 +49,7 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation 
-                                         Storyboard.TargetProperty="Width"
+                                         Storyboard.TargetProperty="MaxWidth"
                                          To="50"
                                          Duration="0:0:0.2"/>
                         </Storyboard>

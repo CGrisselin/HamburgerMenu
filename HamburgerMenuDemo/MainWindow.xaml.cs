@@ -36,5 +36,13 @@ namespace HamburgerMenuDemo
         {
             MessageBox.Show("Selection Binding");
         }
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width < 800 && HamMenu.IsOpen)
+                HamMenu.IsOpen = false;
+            if (e.NewSize.Width > 800 && !HamMenu.IsOpen)
+                HamMenu.IsOpen = true;
+        }
     }
 }

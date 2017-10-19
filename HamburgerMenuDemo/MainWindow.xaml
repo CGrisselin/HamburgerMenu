@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:HamburgerMenuDemo"
         xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu" x:Class="HamburgerMenuDemo.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowStyle="None" AllowsTransparency="True" x:Name="this_">
-    <Grid Background="Aquamarine">
-        <HamburgerMenu:HamburgerMenu Background="Blue" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
+        Title="MainWindow" Height="350" Width="973.066" x:Name="this_">
+
+    <Grid Background="#FFE6E6E6" SizeChanged="Grid_SizeChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MaxWidth="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <HamburgerMenu:HamburgerMenu MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left" Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" IsOpen="True" x:Name="HamMenu" Background="#FFB02424">
             <HamburgerMenu:HamburgerMenu.Content>
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/home.png" Text="Home" SelectionCommand="{Binding ElementName=this_}"/>
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/search.png" Text="Search"/>
