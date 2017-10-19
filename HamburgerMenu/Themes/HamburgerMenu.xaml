@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:HamburgerMenu">
+    xmlns:local="clr-namespace:HamburgerMenu"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
     <Style TargetType="local:HamburgerMenu">
         <Style.Resources>
         </Style.Resources>
@@ -40,6 +41,11 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=MenuIconColor}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown" >
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=ClickCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <Rectangle.OpacityMask>
                                 <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=MenuIcon}" Stretch="Uniform" />
                             </Rectangle.OpacityMask>

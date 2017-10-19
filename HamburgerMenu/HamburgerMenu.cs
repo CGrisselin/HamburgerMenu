@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
@@ -205,5 +206,42 @@ namespace HamburgerMenu
         public static readonly DependencyProperty MenuIconProperty =
             DependencyProperty.Register("MenuIcon", typeof(ImageSource), typeof(HamburgerMenu), new PropertyMetadata(
                 new BitmapImage(new Uri("pack://application:,,,/HamburgerMenu;component/Assets/Menu.png", UriKind.Absolute))));
+
+        private ICommand _clickCommand;
+        public ICommand ClickCommand
+        {
+            get
+            {
+                return _clickCommand ?? (_clickCommand = new CommandHandler(() =>
+                {
+                    if (AutomaticOpenClose) return;
+                    IsOpen = !IsOpen;
+                }, 
+                true));
+            }
+        }
+    }
+
+    public class CommandHandler : ICommand
+    {
+        private Action _action;
+        private bool _canExecute;
+        public CommandHandler(Action action, bool canExecute)
+        {
+            _action = action;
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute;
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void Execute(object parameter)
+        {
+            _action();
+        }
     }
 }
