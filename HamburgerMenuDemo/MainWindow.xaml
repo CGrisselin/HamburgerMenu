@@ -44,6 +44,7 @@
                     DockPanel.Dock="Bottom"
                     Icon="Assets/reload.png"
                     IsSelectable="False"
+                    Background="DimGray"
                     Text="Reload" />
                 <hamburgerMenu:HamburgerMenuItem
                     DockPanel.Dock="Bottom"
@@ -57,7 +58,7 @@
                     DockPanel.Dock="Top"
                     Icon="Assets/list.png"
                     Text="Lists" />
-                <hamburgerMenu:HamburgerMenuItem Icon="Assets/person.png" Text="Profile" />
+                <hamburgerMenu:HamburgerMenuItem Icon="Assets/person.png" Text="Profile" Background="DimGray"/>
             </hamburgerMenu:HamburgerMenu.Content>
         </hamburgerMenu:HamburgerMenu>
         <Grid Grid.Column="1">
