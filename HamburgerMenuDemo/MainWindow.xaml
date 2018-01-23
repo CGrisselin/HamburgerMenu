@@ -29,6 +29,7 @@
             OpenWidth="170"
             SelectionIndicatorWidth="3"
             SelectionIndicatorColor="CadetBlue"
+            SelectionBackgroundColor="CornflowerBlue"             
             SlideOpenDelay="0"
             AutomaticOpenClose="False"
             x:Name="HamMenu">

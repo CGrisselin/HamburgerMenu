@@ -106,6 +106,14 @@ namespace HamburgerMenu
         public static readonly DependencyProperty MenuIconColorProperty =
             DependencyProperty.Register("MenuIconColor", typeof(Brush), typeof(HamburgerMenu), new PropertyMetadata(Brushes.White));
 
+        public Brush SelectionBackgroundColor
+        {
+            get { return (Brush)GetValue(SelectionBackgroundColorProperty); }
+            set { SetValue(SelectionBackgroundColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionBackgroundColorProperty =
+            DependencyProperty.Register("SelectionBackgroundColor", typeof(Brush), typeof(HamburgerMenu), new PropertyMetadata(Brushes.Red));
 
         public Brush SelectionIndicatorColor
         {

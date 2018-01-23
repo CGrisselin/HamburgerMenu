@@ -16,12 +16,12 @@
                 <ControlTemplate TargetType="local:HamburgerMenuItem">
                     <Button
                         x:Name="ListBoxItemButton"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Center"                        
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
                         Command="{TemplateBinding SelectionCommand}"
                         CommandParameter="{TemplateBinding SelectionCommandParameter}">
-                        <Grid>
+                        <Grid Name="MainGrid" Background="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=SelectionIndicatorWidth}" />
                                 <ColumnDefinition />
@@ -70,6 +70,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ItemSelectedIndicator" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MainGrid" Property="Background" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenuItem}}, Path=SelectionBackgroundColor}" />
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>

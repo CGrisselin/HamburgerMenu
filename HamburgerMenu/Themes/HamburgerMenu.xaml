@@ -22,6 +22,7 @@
                             <Style TargetType="local:HamburgerMenuItem">
                                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=MenuItemForeground}" />
                                 <Setter Property="SelectionIndicatorColor" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=SelectionIndicatorColor}" />
+                                <Setter Property="SelectionBackgroundColor" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=SelectionBackgroundColor}" />
                             </Style>
                         </ResourceDictionary>
                     </ControlTemplate.Resources>
