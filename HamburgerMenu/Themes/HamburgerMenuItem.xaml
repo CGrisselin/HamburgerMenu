@@ -23,7 +23,7 @@
                         CommandParameter="{TemplateBinding SelectionCommandParameter}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2" />
+                                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:HamburgerMenu}}, Path=SelectorWidth}" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid Grid.ColumnSpan="2">

@@ -151,6 +151,18 @@ namespace HamburgerMenu
             set { SetValue(CloseWidthProperty, value); }
         }
 
+        public static readonly DependencyProperty SelectorWidthProperty = DependencyProperty.Register(
+            "SelectorWidth", typeof(double), typeof(HamburgerMenu), new PropertyMetadata(2d));
+
+        [TypeConverter(typeof(LengthConverter))]
+        [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
+        public double SelectorWidth
+        {
+            get { return (double)GetValue(SelectorWidthProperty); }
+            set { SetValue(SelectorWidthProperty, value); }
+        }
+
+
         public static readonly DependencyProperty OpenWidthProperty = DependencyProperty.Register(
             "OpenWidth", typeof(double), typeof(HamburgerMenu), new PropertyMetadata(200d));
 
@@ -213,6 +225,7 @@ namespace HamburgerMenu
                 new BitmapImage(new Uri("pack://application:,,,/HamburgerMenu;component/Assets/Menu.png", UriKind.Absolute))));
 
         private ICommand _clickCommand;
+
         public ICommand ClickCommand
         {
             get

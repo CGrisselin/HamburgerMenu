@@ -21,6 +21,7 @@
             AnimationDuration="0.2"
             Background="Black"
             CloseWidth="45"
+            SelectorWidth="3"
             IconsMargin="10"
             IconsSize="20"
             MenuIcon="Assets/myAppIcon.png"
