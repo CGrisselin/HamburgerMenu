@@ -151,15 +151,15 @@ namespace HamburgerMenu
             set { SetValue(CloseWidthProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectorWidthProperty = DependencyProperty.Register(
-            "SelectorWidth", typeof(double), typeof(HamburgerMenu), new PropertyMetadata(2d));
+        public static readonly DependencyProperty SelectionIndicatorWidthProperty = DependencyProperty.Register(
+            "SelectionIndicatorWidth", typeof(double), typeof(HamburgerMenu), new PropertyMetadata(2d));
 
         [TypeConverter(typeof(LengthConverter))]
         [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
-        public double SelectorWidth
+        public double SelectionIndicatorWidth
         {
-            get { return (double)GetValue(SelectorWidthProperty); }
-            set { SetValue(SelectorWidthProperty, value); }
+            get { return (double)GetValue(SelectionIndicatorWidthProperty); }
+            set { SetValue(SelectionIndicatorWidthProperty, value); }
         }
 
 
